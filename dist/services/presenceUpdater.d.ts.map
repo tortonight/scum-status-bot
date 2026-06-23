@@ -1,1 +1,1 @@
-{"version":3,"file":"presenceUpdater.d.ts","sourceRoot":"","sources":["../../src/services/presenceUpdater.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAgB,MAAM,YAAY,CAAC;AAIlD,wBAAgB,oBAAoB,CAAC,MAAM,EAAE,MAAM,GAAG,IAAI,CAUzD"}
+{"version":3,"file":"presenceUpdater.d.ts","sourceRoot":"","sources":["../../src/services/presenceUpdater.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAgB,MAAM,YAAY,CAAC;AAMlD,wBAAgB,oBAAoB,CAAC,MAAM,EAAE,MAAM,GAAG,IAAI,CAUzD"}

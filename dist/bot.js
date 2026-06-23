@@ -37,6 +37,8 @@ exports.startBot = startBot;
 const discord_js_1 = require("discord.js");
 const config_1 = require("./config");
 const statusCommand = __importStar(require("./commands/status"));
+const setupCommand = __importStar(require("./commands/setup"));
+const cleanupCommand = __importStar(require("./commands/cleanup"));
 const presenceUpdater_1 = require("./services/presenceUpdater");
 async function startBot() {
     const client = new discord_js_1.Client({
@@ -48,11 +50,13 @@ async function startBot() {
     // Store commands
     const commands = new discord_js_1.Collection();
     commands.set(statusCommand.data.name, statusCommand);
-    client.once('ready', async () => {
+    commands.set(setupCommand.data.name, setupCommand);
+    commands.set(cleanupCommand.data.name, cleanupCommand);
+    client.once('clientReady', async () => {
         console.log(`✅ Bot logged in as ${client.user?.tag}`);
         // Register slash commands globally
         await registerCommands(client.user.id);
-        // Start presence updater
+        // Start presence & channel updater
         (0, presenceUpdater_1.startPresenceUpdater)(client);
     });
     client.on('interactionCreate', async (interaction) => {
@@ -78,6 +82,8 @@ async function registerCommands(clientId) {
     const rest = new discord_js_1.REST({ version: '10' }).setToken(config_1.config.discordToken);
     const commands = [
         statusCommand.data.toJSON(),
+        setupCommand.data.toJSON(),
+        cleanupCommand.data.toJSON(),
     ];
     try {
         console.log('🔄 Registering slash commands...');

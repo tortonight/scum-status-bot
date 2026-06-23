@@ -38,4 +38,12 @@ export interface BotConfig {
   battleMetricsApiKey?: string;
   serverId: string;
   presenceUpdateInterval: number;
+  statusChannelId?: string;
+}
+
+export interface SetupData {
+  guildId: string;
+  categoryId: string;
+  channelId: string;
+  messageId: string | null;
 }
